@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('navbar')
+@include('layouts.nav')
+@endsection
 @section('content')
 <h1>{{$post->title}}</h1>
     {{$post->body}}

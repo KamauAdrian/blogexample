@@ -20,13 +20,15 @@ public function user(){
 public function comments(){
     return $this->hasMany('App\Comment');
 }
+
     public function addcoment($body){
         $this->comments()->create(compact('body'));
 
-////the long method
+//the long method
 //Comment::create([
 //    'body'=>$body,
-//    'post_id'=>$this->id
+//    'post_id'=>$this->id,
+//    'user_id'=>$this->id,
 //]);
     }
 
