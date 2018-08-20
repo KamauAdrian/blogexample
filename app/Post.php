@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -22,7 +23,7 @@ public function comments(){
 }
 
     public function addcoment($body){
-        $this->comments()->create(compact('body'));
+    $this->comments()->create(compact('body'));
 
 //the long method
 //Comment::create([
@@ -30,7 +31,32 @@ public function comments(){
 //    'post_id'=>$this->id,
 //    'user_id'=>$this->id,
 //]);
-    }
+}
+
+//    public function scopeFilter($query,$filters){
+//
+//
+//        if($month = $filters['month']){
+//
+//           $query->whereMonth('created_at',Carbon::parse($month)->month);
+//
+//       }
+//        if($year = $filters['year']){
+//
+//            $query->whereYear('created_at',$year);
+//
+//        }
+//
+//    }
 
 
+
+public static function archives()
+{
+    return static::selectRaw('year(created_at) year,monthname(created_at) month,count(*) published')
+        ->orderByRaw('min(created_at) desc')
+        ->groupBy('year','month')->get()->toArray();
+
+
+}
 }

@@ -20,6 +20,11 @@
 
 <body>
 @yield('navbar')
+@if($flash = session('message'))
+<div class="alert alert-success" role="alert">
+    {{$flash}}
+</div>
+@endif
 
 <div class="container">
     <div class="blog-header">

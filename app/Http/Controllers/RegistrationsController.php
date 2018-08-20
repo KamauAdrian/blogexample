@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+//use App\Mail\Welcome;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class RegistrationsController extends Controller
 {
@@ -26,11 +29,13 @@ class RegistrationsController extends Controller
         //create new user
         $user=User::create(request(['name','email','password']));
 
+        session()->flash('message','Thank You for registering with us');
+
         //sign in the new user
 
         auth()->login($user);
 
-
+//Mail::to($user)->send(new Welcome($user));
         //redirect to the home page
         return redirect('/');
     }

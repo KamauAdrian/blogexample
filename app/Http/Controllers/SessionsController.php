@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 class SessionsController extends Controller
@@ -15,7 +16,7 @@ class SessionsController extends Controller
     public function store(){
 
         if(! auth()->attempt(request(['email','password']))){
-            return back()->withErrors(['message'=>'invalid email/or password']);
+            return back()->withErrors(['message'=>'invalid email/or passwordph']);
         }
         return redirect('');
 
