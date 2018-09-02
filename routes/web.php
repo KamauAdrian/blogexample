@@ -21,6 +21,13 @@ Route::post('/create','PostsController@store')->name('create');
 //show the posts
 Route::get('/{post}','PostsController@show');
 
+//edit the post
+Route::get('/{post}/edit','PostsController@edit')->name('edit');
+Route::get('/edit/{post}','PostsController@update');
+
+//delete the post
+Route::get('/{post}/delete','PostsController@destroy');
+
 //add comments to a post
 Route::post('/{post}/comments','CommentsController@store');
 
@@ -34,5 +41,5 @@ Route::get('/user/login','SessionsController@create')->name('get-login');
 Route::post('/login','SessionsController@store')->name('login');
 
 //log out the user
-Route::get('/user/logout','SessionsController@destroy');
+Route::post('/user/logout','SessionsController@destroy')->name('user-logout');
 

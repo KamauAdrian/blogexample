@@ -58,4 +58,21 @@ $this->validate(request(),[
     public function show(post $post){
        return view('posts.show',compact('post'));
     }
+    public function edit(post $post){
+
+        return view('posts.edit',compact('post'));
+    }
+    public function update(Request $request,$id){
+        $post=Post::find($id);
+
+        $post->update($request->all());
+
+        return redirect()->home();
+    }
+    public function destroy(post $post){
+
+        $post->delete();
+
+        return redirect()->home();
+    }
 }

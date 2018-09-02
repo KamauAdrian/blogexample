@@ -12,6 +12,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{url('css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{url('css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{{url('css/blog.css')}}" rel="stylesheet">
@@ -19,7 +20,6 @@
 </head>
 
 <body>
-@yield('navbar')
 @if($flash = session('message'))
 <div class="alert alert-success" role="alert">
     {{$flash}}

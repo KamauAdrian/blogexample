@@ -14,7 +14,6 @@ class RegistrationsController extends Controller
     {
     $this->middleware('guest');
     }
-
     public function index(){
         return view('users.register');
     }

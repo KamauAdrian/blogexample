@@ -1,7 +1,5 @@
 @extends('layouts.master')
-@section('navbar')
     @include('layouts.nav')
-@endsection
 @section('content')
     <h2>Sign In</h2>
     <form action="{{url('login')}}" method="post">

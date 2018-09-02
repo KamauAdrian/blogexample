@@ -1,7 +1,5 @@
 @extends('layouts.master')
-@section('navbar')
     @include('layouts.nav')
-@endsection
 @section('content')
 
     {{--{!! Form::open(['url' => 'foo/bar']) !!}--}}
@@ -13,7 +11,7 @@
         {{--</div>--}}
     {{--</div>--}}
     {{--{!! Form::close() !!}--}}
-    <form class="form-horizontal" method="post" action="{{url('create')}}">
+    <form class="form-horizontal" method="post" action="{{route('create')}}">
         @csrf
         <div class="form-group">
             <label for="body" class="col-sm-2 control-label">Title:</label>

@@ -3,8 +3,23 @@
 @include('layouts.nav')
 @endsection
 @section('content')
+    <hr>
+
+        <div>
 <h1>{{$post->title}}</h1>
     {{$post->body}}
+        </div>
+        <div>
+
+            <button class="btn btn-default" type="button">
+                <a href="{{$post->id}}/delete">Delete post</a>
+            </button>
+
+            <button class="btn btn-default" type="button">
+                <a href="{{$post->id}}/edit">Edit post</a>
+            </button>
+
+        </div>
 <hr>
 <div class="comments">
     <ul class="list-group">
