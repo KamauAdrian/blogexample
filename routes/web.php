@@ -13,9 +13,10 @@
 
 //loads the home/main page
 Route::get('/','PostsController@index')->name('home');
+Route::get('/post/create','PostsController@create')->name('get-create');
 
 //creating new posts
-Route::get('/post/create','PostsController@create')->name('get-create');
+
 Route::post('/create','PostsController@store')->name('create');
 
 //show the posts
@@ -23,7 +24,7 @@ Route::get('/{post}','PostsController@show');
 
 //edit the post
 Route::get('/{post}/edit','PostsController@edit')->name('edit');
-Route::get('/edit/{post}','PostsController@update');
+Route::post('/edit/{post}','PostsController@update');
 
 //delete the post
 Route::get('/{post}/delete','PostsController@destroy');
@@ -42,4 +43,8 @@ Route::post('/login','SessionsController@store')->name('login');
 
 //log out the user
 Route::post('/user/logout','SessionsController@destroy')->name('user-logout');
+
+//Route::group(['middleware'=>'auth'],function(){
+//
+//});
 

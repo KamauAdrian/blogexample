@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @include('layouts.nav')
 @section('content')
-    <form class="form-horizontal" method="post" action="{{url('edit')}}/{{$post->id}}">
+    <form class="form-horizontal" method="post" action="{{url('edit',[$post->id])}}">
         @csrf
         <div class="form-group">
             <input type="hidden" name="_method" value="PUT">
@@ -16,7 +16,7 @@
         <div class="form-group">
             <label for="body" class="col-sm-2 control-label">Body:</label>
             <div class="col-sm-10">
-                <textarea type="text" name="body" class="form-control" id="body" value="{{$post->body}}"></textarea>
+                <textarea type="text" name="body" class="form-control" id="body">{{$post->body}}</textarea>
             </div>
         </div>
 

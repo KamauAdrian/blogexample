@@ -63,16 +63,18 @@ $this->validate(request(),[
         return view('posts.edit',compact('post'));
     }
     public function update(Request $request,$id){
-        $post=Post::find($id);
+        $post = post::find($id);
+        $post->title = $request->title;
+        $post->body = $request->body;
 
-        $post->update($request->all());
+        $post->save();
 
-        return redirect()->home();
+        return redirect()->home()->with('success','Post Updated Successfully');
     }
     public function destroy(post $post){
 
         $post->delete();
 
-        return redirect()->home();
+        return redirect()->home()->with('success','Post deleted Successfully');
     }
 }
