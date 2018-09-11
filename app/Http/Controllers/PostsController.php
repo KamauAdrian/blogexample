@@ -69,7 +69,7 @@ $this->validate(request(),[
 
         $post->save();
 
-        return redirect()->home()->with('success','Post Updated Successfully');
+        return redirect('/')->with('success','Post Updated Successfully');
     }
     public function destroy(post $post){
 
