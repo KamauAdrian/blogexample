@@ -13,7 +13,7 @@
             <input type="password" class="form-control" name="password" id="password" placeholder="Password">
         </div>
         <div class="form-group">
-        <button type="submit" class="btn btn-default">Sign In</button>
+        <button type="submit" class="btn btn-info">Sign In</button>
         </div>
     </form>
     @include('layouts.errors')

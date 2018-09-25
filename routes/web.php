@@ -42,7 +42,7 @@ Route::get('/user/login','SessionsController@create')->name('get-login');
 Route::post('/login','SessionsController@store')->name('login');
 
 //log out the user
-Route::get('/user/logout','SessionsController@destroy')->name('user-logout');
+Route::any('/user/logout','SessionsController@destroy')->name('user-logout');
 
 Route::group(['middleware'=>'auth'],function(){
 

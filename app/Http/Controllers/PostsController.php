@@ -47,13 +47,18 @@ $this->validate(request(),[
     'body'=>'required'
 ]);
 //create a new post
-        auth()->user()->publish(new Post(request([
+      $post=  auth()->user()->publish(new Post(request([
                 'title',
                 'body'
             ])));
 
 //redirect to the home page
-        return redirect()->home();
+        if ($post){
+            return redirect('/');
+        }else{
+            return redirect()->back()->with('error','Could not create post kindly try again');
+        }
+
     }
     public function show(post $post){
        return view('posts.show',compact('post'));
