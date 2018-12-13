@@ -11,6 +11,7 @@ class PostsController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index']);
+//        return redirect('user/login');
     }
 
     public function index(){
@@ -29,6 +30,7 @@ class PostsController extends Controller
 
         }
        $posts = $posts->get();
+       $posts = Post::paginate(5);
 //return $archives;
 
         return view('posts.index',compact('posts'));
@@ -47,17 +49,36 @@ $this->validate(request(),[
     'body'=>'required'
 ]);
 //create a new post
-      $post=  auth()->user()->publish(new Post(request([
-                'title',
-                'body'
-            ])));
+        $post = new  Post();
+        $post->user_id=auth()->user()->id;
+        $post->title=request('title');
+        $post->body=request('body');
+        if($request->has('img')){
+            $file = $request->file('img');
+
+            $name = $file->getClientOriginalName();
+            $file->move('images', $name);
+            $input['path']=$name;
+            $post->path = $name;
+        }
+        $post->save();
+
+
+
+//      $post =  auth()->user()->publish(new Post(request([
+//                'title',
+//                'body'
+//            ])));
+
 
 //redirect to the home page
-        if ($post){
-            return redirect('/');
-        }else{
-            return redirect()->back()->with('error','Could not create post kindly try again');
-        }
+
+        return redirect('/');
+//        if ($post==true){
+//
+//        }else{
+//            return redirect()->back()->withErrors('message','Could not create post kindly try again');
+//        }
 
     }
     public function show(post $post){
@@ -76,10 +97,13 @@ $this->validate(request(),[
 
         return redirect('/')->with('success','Post Updated Successfully');
     }
-    public function destroy(post $post){
+    public function destroy(Post $post){
+
+
+//        unlink(public_path() .$post->);
 
         $post->delete();
 
-        return redirect()->home()->with('success','Post deleted Successfully');
+        return redirect('/')->with('message','Post deleted Successfully');
     }
 }

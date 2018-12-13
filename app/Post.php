@@ -23,14 +23,14 @@ public function comments(){
 }
 
     public function addcoment($body){
-    $this->comments()->create(compact('body'));
+//    $this->comments()->create(compact('body'));
 
 //the long method
-//Comment::create([
-//    'body'=>$body,
-//    'post_id'=>$this->id,
-//    'user_id'=>$this->id,
-//]);
+Comment::create([
+    'body'=>$body,
+    'post_id'=>$this->id,
+    'user_id'=>auth()->user()->id,
+]);
 }
 
 //    public function scopeFilter($query,$filters){

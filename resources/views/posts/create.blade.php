@@ -11,7 +11,7 @@
         {{--</div>--}}
     {{--</div>--}}
     {{--{!! Form::close() !!}--}}
-    <form class="form-horizontal" method="post" action="{{route('create')}}">
+    <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{{route('create')}}">
         @csrf
         <div class="form-group">
             <label for="body" class="col-sm-2 control-label">Title:</label>
@@ -28,8 +28,15 @@
         </div>
 
         <div class="form-group">
+            <label for="" class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <input name="img" class="btn btn-info" type="file">
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Publish</button>
+                <button type="submit" class="btn btn-info">Publish</button>
             </div>
         </div>
     </form>

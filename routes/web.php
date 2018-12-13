@@ -12,7 +12,7 @@
 */
 
 //loads the home/main page
-Route::get('/','PostsController@index')->name('home');
+Route::get('/','PostsController@index');
 
 
 //creating new posts
@@ -27,7 +27,7 @@ Route::get('/{post}/edit','PostsController@edit')->name('edit');
 Route::put('/edit/{post}','PostsController@update');
 
 //delete the post
-Route::get('/{post}/delete','PostsController@destroy');
+Route::get('/{post}/delete','PostsController@destroy')->name('delete-post');
 
 //add comments to a post
 Route::post('/{post}/comments','CommentsController@store');

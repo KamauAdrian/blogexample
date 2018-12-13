@@ -11,13 +11,15 @@
         </div>
         <div>
 
-            <button class="btn btn-default" type="button">
-                <a href="{{$post->id}}/delete">Delete post</a>
-            </button>
 
-            <button class="btn btn-default" type="button">
-                <a href="{{$post->id}}/edit">Edit post</a>
-            </button>
+            {{--{{$post->id}}/delete--}}
+            <a href="{{$post->id}}/delete}}">
+                <button class="btn btn-danger" type="button">Delete post</button>
+            </a>
+
+            <a href="{{$post->id}}/edit">
+                <button class="btn btn-info" type="button">Edit Post</button>
+            </a>
 
         </div>
 <hr>
@@ -25,6 +27,7 @@
     <ul class="list-group">
     @foreach($post->comments as $comment)
         <li class="list-group-item">
+            {{$comment->user}}
             <strong>{{$comment->created_at->diffForHumans()}}:</strong> {{$comment->body}}
         </li>
     @endforeach
@@ -39,11 +42,12 @@
             </div>
             <div class="form-group">
                 <div class="">
-                    <button type="submit" class="btn btn-primary">Add Comment</button>
+                    <button type="submit" class="btn btn-info">Add Comment</button>
                 </div>
             </div>
         </form>
         @include('layouts.errors')
     </div>
 </div>
+
 @endsection
