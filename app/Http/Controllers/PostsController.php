@@ -17,7 +17,8 @@ class PostsController extends Controller
     public function index(){
 
 //       $posts = Post::latest()->filter(['month','year'])->get();
-       $posts = Post::latest();
+       $posts = Post::all();
+
 
        if($month = request('month')){
 
@@ -29,8 +30,9 @@ class PostsController extends Controller
             $posts->whereYear('created_at',$year);
 
         }
-       $posts = $posts->get();
-       $posts = Post::paginate(5);
+        $posts = Post::paginate(2);
+//        $posts = $posts->get();
+
 //return $archives;
 
         return view('posts.index',compact('posts'));
@@ -60,6 +62,10 @@ $this->validate(request(),[
             $file->move('images', $name);
             $input['path']=$name;
             $post->path = $name;
+        }else{
+            $name = 'avatar.png';
+            $post->path = $name;
+
         }
         $post->save();
 

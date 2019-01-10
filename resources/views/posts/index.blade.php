@@ -16,7 +16,7 @@
         {{--</ul>--}}
     {{--</nav>--}}
 
-    <center>
+
         {{ $posts->links() }}
-    </center>
+
 @endsection
